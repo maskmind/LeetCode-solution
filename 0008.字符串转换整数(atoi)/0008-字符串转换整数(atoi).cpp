@@ -2,8 +2,7 @@ class Solution {
 public:
     int myAtoi(string str) {
         if(str.length()==0)return 0;
-        vector<char> v(str.begin(),str.end());
-        
+        vector<char> v(str.begin(),str.end());       
         v.push_back(' ');
         int len=v.size();
         int st=0,ed=0;
