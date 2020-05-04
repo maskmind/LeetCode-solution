@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         if (s.length()==0)
@@ -37,5 +37,40 @@ public:
         }
         return maxlen;
         
+    }
+};*/
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if (s.length()==0)
+        {
+            return 0;
+        }
+        int position[256];
+        //≥ı º
+        for (int i = 0; i < 256; ++i)
+        {
+            position[i]=-1;
+        }
+        int curlen=0;
+        int maxlen=0;
+        for (int i = 0; i < s.length(); ++i)
+        {
+            if (position[s[i]]==-1||i-position[s[i]]>curlen)
+            {
+                curlen++;
+                //¥ÊŒª÷√
+                position[s[i]]=i;
+            }else{
+                maxlen=max(curlen,maxlen);
+                curlen=i-position[s[i]];
+                //update position
+                position[s[i]]=i;
+
+            }
+        }
+        maxlen=max(maxlen,curlen);
+        return maxlen;
+
     }
 };
