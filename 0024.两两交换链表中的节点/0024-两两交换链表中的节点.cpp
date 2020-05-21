@@ -9,6 +9,7 @@
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
+       
     int k=2;
         vector<ListNode*> v;
         ListNode*p=head,*q=head,*tmp;
@@ -72,5 +73,7 @@ public:
             tmp->next=q;
         }
         return tail;
+
+        
     }
 };
