@@ -9,16 +9,27 @@
  */
 class Solution {
 public:
-    vector<int> v;
     vector<int> inorderTraversal(TreeNode* root) {
-        if (root==NULL)
+        stack<TreeNode*> stk;
+        vector<int> res;
+        if (!root)
         {
-            return v;
+            return res;
         }
-        inorderTraversal(root->left);
-        v.push_back(root->val);
-        inorderTraversal(root->right);
-        return v;
+
+        while(!stk.empty()||root!=nullptr){
+            while(root){
+                stk.push(root);
+                root=root->left;
+            }
+            TreeNode* p=stk.top();stk.pop();
+
+            int VVal=p->val;
+            res.push_back(VVal);
+            root=p->right;
+        }
+
+        return res;
     }
     
 };
